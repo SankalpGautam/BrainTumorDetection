@@ -18,8 +18,24 @@ The convolution layer is the core building block of the CNN. It carries the main
 This layer performs a dot product between two matrices, where one matrix is the set of learnable parameters otherwise known as a kernel, and the other matrix is the restricted portion of the receptive field. 
 The kernel is spatially smaller than an image but is more in-depth. This means that, if the image is composed of three (RGB) channels, the kernel height and width will be spatially small, but the depth extends up to all three channels.
 ### Padding and Striding
-Before we go further, it’s also useful to talk about padding and striding. These techniques are often used in CNNs:
-1) Padding. Padding expands the input matrix by adding fake pixels to the borders of the matrix. This is done because convolution reduces the size of the matrix. For example, a 5x5 matrix turns into a 3x3 matrix when a filter goes over it.
-2) Striding. It often happens that when working with a convolutional layer, you need to get an output that is smaller than the input. One way to achieve this is to use a pooling layer. Another way to achieve this is to use striding. The idea behind stride is to skip some areas when the kernel slides over: for example, skipping every 2 or 3 pixels. It reduces spatial resolution and makes the network more computationally efficient.
+Before we go further, it’s also useful to talk about padding and striding. These techniques are often used in CNNs:
+
+1) Padding. Padding expands the input matrix by adding fake pixels to the borders of the matrix. This is done because convolution reduces the size of the matrix. For example, a 5x5 matrix turns into a 3x3 matrix when a filter goes over it.
+
+2) Striding. It often happens that when working with a convolutional layer, you need to get an output that is smaller than the input. One way to achieve this is to use a pooling layer. Another way to achieve this is to use striding. The idea behind stride is to skip some areas when the kernel slides over: for example, skipping every 2 or 3 pixels. It reduces spatial resolution and makes the network more computationally efficient.
+## What is Transfer Learning
+Transfer Learning is something that comes naturally to humans. Humans have a built-in capability to transfer knowledge across various tasks. When learning one task, we can seamlessly utilize what we acquire as knowledge to solve related tasks. The more similar the tasks are, the easier it is for us to transfer our existing knowledge to the new task.
+For instance,
+
+1. If we learn how to write code in one programming language, like C++, it would be much easier to learn a new programming language, say, Python.
+
+2. If we learn how to ride a bike, it would be easier for us to learn how to ride a car.
+
+Transfer learning is a machine learning method where a model developed for a task is reused as the starting point for a model on a second task.
+## Model using Transfer Learning (Efficient-Net)
+Efficient Net: It model is a simple mobile-size baseline architecture and is trained on the ImageNet dataset.
+
+It is based on the baseline network developed by the neural architecture search using the AutoML MNAS framework. The network is fine-tuned to obtain maximum accuracy but is also penalized if the network is very computationally heavy. It is also penalized for slow inference time when the network takes a lot of time to make predictions. The architecture uses a mobile inverted bottleneck convolution similar to MobileNet V2 but is much larger due to the increase in FLOPS.
+
 
 
